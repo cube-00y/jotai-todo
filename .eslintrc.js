@@ -158,6 +158,7 @@ module.exports = {
 		"@typescript-eslint/ban-types": "off",
 
 		// react
+		"react/react-in-jsx-scope": "off",
 		"react/destructuring-assignment": "off",
 		"react/jsx-boolean-value": "off",
 		"react/jsx-filename-extension": [
