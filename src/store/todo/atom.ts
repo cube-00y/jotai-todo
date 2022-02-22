@@ -10,8 +10,26 @@ const setAddTodoListAtom = atom<null, ITodoListItem>(null, (get, set, value) => 
 	set(todoListLastIndex, value.id);
 });
 
+const setTodoListComplete = atom<null, { id: number; complete: boolean }>(
+	null,
+	(get, set, { id, complete }) => {
+		const result = get(todoListAtom).map((item) => {
+			if (item.id === id) {
+				return {
+					...item,
+					complete,
+				};
+			}
+
+			return item;
+		});
+		set(todoListAtom, result);
+	},
+);
+
 export const getTodoAtoms = () => ({
 	todoListAtom,
 	getTodoListLastIndexAtom,
 	setAddTodoListAtom,
+	setTodoListComplete,
 });
